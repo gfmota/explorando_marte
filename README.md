@@ -34,7 +34,7 @@ A saída deverá contar uma linha para cada sonda, na mesma ordem de entrada, in
 
 ### Exemplos de Entrada e Saída:
 
-####Entrada de Teste:
+#### Entrada de Teste:
 ```
 5 5
 1 2 N
