@@ -88,4 +88,8 @@ class SpaceProbe {
             throw new RuntimeException("Failed to move, there's already a space scope in " + x + "," + y);
         }
     }
+
+    public void printPosition() {
+        System.out.println(x + " " + y + " " + facing);
+    }
 }
