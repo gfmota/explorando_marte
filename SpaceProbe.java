@@ -7,9 +7,11 @@ class SpaceProbe {
     private char facing;
 
     public SpaceProbe(int x, int y, char facing) {
+        isSafe(x, y);
         this.x = x;
         this.y = y;
         this.facing = facing;
+        land[x - 1][y - 1] = 1;
     }
 
     public static void setLand(int x, int y){
@@ -80,7 +82,7 @@ class SpaceProbe {
     }
 
     private void isSafe(int x, int y) {
-        if (x >= landLength || y >= landHeight) {
+        if (x > landLength || x <= 0 || y > landHeight || y <= 0) {
             throw new RuntimeException("Failed to move, out of the land.");
         } 
 
