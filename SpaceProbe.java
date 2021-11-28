@@ -14,10 +14,28 @@ class SpaceProbe {
         land[x][y] = 1;
     }
 
+    public int[] getPosition() {
+        return new int[] {x, y};
+    }
+
+    public char getFacing() {
+        return facing;
+    }
+
+    public void setState(int[] pos, char facing) {
+        this.x = pos[0];
+        this.y = pos[1];
+        this.facing = facing;
+    }
+
     public static void setLand(int x, int y){
         land = new int[x + 1][y + 1];
         landLength = x;
         landHeight = y;
+    }
+
+    public static int[][] getLand() {
+        return land;
     }
 
     public void turnRight() {
@@ -85,7 +103,7 @@ class SpaceProbe {
         land[x][y] = 1;
     }
 
-    private void isSafe(int x, int y) {
+    public static void isSafe(int x, int y) {
         if (x > landLength || x < 0 || y > landHeight || y < 0) {
             throw new RuntimeException("Failed to move, out of the land.");
         } 
@@ -93,9 +111,5 @@ class SpaceProbe {
         if (land[x][y] != 0) {
             throw new RuntimeException("Failed to move, there's already a space scope in " + x + "," + y);
         }
-    }
-
-    public void printPosition() {
-        System.out.println(x + " " + y + " " + facing);
     }
 }
