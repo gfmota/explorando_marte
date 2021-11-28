@@ -35,5 +35,7 @@ public class SpaceManager {
 
             probe.printPosition();
         }
+
+        in.close();
     }
 }
