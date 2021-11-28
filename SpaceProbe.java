@@ -11,11 +11,11 @@ class SpaceProbe {
         this.x = x;
         this.y = y;
         this.facing = facing;
-        land[x - 1][y - 1] = 1;
+        land[x][y] = 1;
     }
 
     public static void setLand(int x, int y){
-        land = new int[x][y];
+        land = new int[x + 1][y + 1];
         landLength = x;
         landHeight = y;
     }
@@ -59,6 +59,8 @@ class SpaceProbe {
     }
 
     public void moveForward() {
+        int oldX = x;
+        int oldY = y;
         switch (facing) {
             case 'N':
                 isSafe(x, y+1);
@@ -79,10 +81,12 @@ class SpaceProbe {
             default:
                 throw new RuntimeException("Facing invalid direction.");
         }
+        land[oldX][oldY] = 0;
+        land[x][y] = 1;
     }
 
     private void isSafe(int x, int y) {
-        if (x > landLength || x <= 0 || y > landHeight || y <= 0) {
+        if (x > landLength || x < 0 || y > landHeight || y < 0) {
             throw new RuntimeException("Failed to move, out of the land.");
         } 
 
