@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class SpaceManager {
@@ -70,7 +71,7 @@ public class SpaceManager {
                     throw ex;
                 }
             }
-
+            
             int[] probePos = probe.getPosition();
             System.out.println(probePos[0] + " " + probePos[1] + " " + probe.getFacing());
         }
@@ -156,7 +157,7 @@ public class SpaceManager {
     }
 
     private static boolean isThereAnotherPathTo(int[] pos, SpaceProbe probe) {
-        land = SpaceProbe.getLand();
+        land = SpaceProbe.copyLand();
         int[] currentPos = probe.getPosition();
         return (findPath(new int[] {currentPos[0]+1, currentPos[1]},  pos) ||
             findPath(new int[] {currentPos[0]-1, currentPos[1]},  pos) ||

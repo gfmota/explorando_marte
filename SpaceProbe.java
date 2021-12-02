@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class SpaceProbe {
     private static int[][] land;
     private static int landLength;
@@ -23,6 +25,8 @@ class SpaceProbe {
     }
 
     public void setState(int[] pos, char facing) {
+        land[this.x][this.y] = 0;
+        land[pos[0]][pos[1]] = 1;
         this.x = pos[0];
         this.y = pos[1];
         this.facing = facing;
@@ -34,8 +38,13 @@ class SpaceProbe {
         landHeight = y;
     }
 
-    public static int[][] getLand() {
-        return land;
+    public static int[][] copyLand() {
+        if (land == null) return null;
+        int[][] copy = new int[landLength + 1][landHeight + 1];
+        for (int i = 0; i <= landLength; i++) {
+            copy[i] = Arrays.copyOf(land[i], landHeight + 1);
+        }
+        return copy;
     }
 
     public void turnRight() {
